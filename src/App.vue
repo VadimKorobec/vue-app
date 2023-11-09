@@ -1,29 +1,21 @@
 <template>
   <div id="app">
-    <h1>{{ amountOfClicks }}</h1>
-    <Button >Click me</Button>
+    <ApartmentItem/>
   </div>
 </template>
 
 <script>
-import Button from './components/Button.vue'
+import ApartmentItem from './components/apartment/ApartmentItem.vue';
 
 export default {
   name: "App",
-  components: {
-    Button
-  },
-  data(){
-    return{
-      amountOfClicks:0
-    }
-  }
+  components: { ApartmentItem },
 };
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
