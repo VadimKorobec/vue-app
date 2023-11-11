@@ -1,15 +1,38 @@
 <template>
   <div id="app">
-    <ApartmentItem/>
+    <ApartmentsItem
+      :descr="apartment.descr"
+      :price="apartment.price"
+      :rating="apartment.rating"
+      :location="apartment.location.city"
+      :owner="apartment.owner.name"
+    />
   </div>
 </template>
 
 <script>
-import ApartmentItem from './components/apartment/ApartmentItem.vue';
+import ApartmentsItem from "./components/apartment/ApartmenstItem.vue";
 
 export default {
   name: "App",
-  components: { ApartmentItem },
+  components: { ApartmentsItem },
+  data() {
+    return {
+      apartment: {
+        id: "1",
+        title: "Hata",
+        descr: "Great Hata",
+        price: 2023,
+        rating: 4,
+        location: {
+          city: "New Tork",
+        },
+        owner: {
+          name: "Vitek",
+        },
+      },
+    };
+  },
 };
 </script>
 

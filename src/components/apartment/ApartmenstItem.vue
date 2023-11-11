@@ -32,7 +32,7 @@ export default {
       type: Number,
       default: 0,
     },
-    prace: {
+    price: {
       type: Number,
       required: true,
     },
