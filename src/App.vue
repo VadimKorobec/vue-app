@@ -1,38 +1,28 @@
 <template>
   <div id="app">
-    <ApartmentsItem
-      :descr="apartment.descr"
-      :price="apartment.price"
-      :rating="apartment.rating"
-      :location="apartment.location.city"
-      :owner="apartment.owner.name"
-    />
+    <h2>{{ text }}</h2>
+    <CustomInput v-model="text"/>
+    <ApartmentsListVue :items="apartments" />
   </div>
 </template>
 
 <script>
-import ApartmentsItem from "./components/apartment/ApartmenstItem.vue";
+import ApartmentsListVue from "./components/apartment/ApartmentsList.vue";
+import apartments from "./components/apartment/apartments";
+import CustomInput from "./components/shared/CustomInput.vue";
 
 export default {
   name: "App",
-  components: { ApartmentsItem },
-  data() {
-    return {
-      apartment: {
-        id: "1",
-        title: "Hata",
-        descr: "Great Hata",
-        price: 2023,
-        rating: 4,
-        location: {
-          city: "New Tork",
-        },
-        owner: {
-          name: "Vitek",
-        },
-      },
-    };
-  },
+  components: {
+    ApartmentsListVue,
+    CustomInput
+},
+  data(){
+    return{
+      apartments,
+      text:''
+    }
+  }
 };
 </script>
 
