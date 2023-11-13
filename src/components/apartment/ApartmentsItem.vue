@@ -1,5 +1,5 @@
 <template>
-  <div class="apartments-item" @click="log">
+  <div class="apartments-item">
     <div class="apartments-item__inner">
       <img :src="imgSrc" alt="" class="apartments-item__photo" />
       <div class="apartments-item__content">
@@ -9,7 +9,7 @@
         <div class="apartments-item__rating">
           <StarRating :rating="rating" />
         </div>
-        <div class="apartments-item__price">$ {{ price }}</div>
+        <div class="apartments-item__price">UAH {{ price }}</div>
         <a href="https://facebook.com" @click.prevent.stop="handleLinkClick">facebook</a>
       </div>
     </div>
@@ -17,17 +17,17 @@
 </template>
 
 <script>
-import StarRating from "../StarRating.vue";
+import StarRating from '../StarRating'
 
 export default {
-  name: "ApartmentItem",
+  name: 'ApartmentsItem',
   components: {
     StarRating,
   },
   props: {
     descr: {
       type: String,
-      default: "",
+      default: '',
     },
     rating: {
       type: Number,
@@ -39,18 +39,19 @@ export default {
     },
     imgSrc: {
       type: String,
-      default: "",
+      default: '',
     },
   },
-  methods:{
-    log(event){
-      console.log(event)
+  methods: {
+    log(index, event) {
+      console.log(index);
+      console.log(event);
     },
-    handleLinkClick(){
-      console.log('facebook click')
+    handleLinkClick() {
+      console.log('facebook clicked');
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -104,14 +105,6 @@ export default {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  &__link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
   }
 }
 </style>
