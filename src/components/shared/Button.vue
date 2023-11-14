@@ -9,19 +9,29 @@
 </template>
 
 <script>
-export default {
-  name: "Button",
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'Button',
   props: {
     type: {
       type: String,
-      default: "button",
+      default: 'button',
     },
     outlined: {
       type: Boolean,
       default: false,
     },
   },
-};
+  computed: {
+    listeners() {
+      return {
+        ...this.$attrs, // Используем $attrs для передачи атрибутов
+        click: (event) => this.$emit('click', event),
+      };
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>

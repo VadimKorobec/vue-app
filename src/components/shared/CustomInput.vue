@@ -1,20 +1,23 @@
 <template>
-  <input v-on="listeners" class="custom-input">
+  <input v-bind="$attrs" v-on="listeners" class="custom-input">
 </template>
 
 <script>
-  export default {
-    name: 'CustomInput',
-    computed: {
-      listeners() {
-        return {
-          // eslint-disable-next-line vue/no-deprecated-dollar-listeners-api
-          ...this.$listeners,
-          input: event => this.$emit('input', event.target.value)
-        }
-      }
-    }
-  }
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'CustomInput',
+  setup(props, { emit }) {
+    const listeners = {
+      ...props.$attrs,
+      input: (event) => emit('update:modelValue', event.target.value),
+    };
+
+    return {
+      listeners,
+    };
+  },
+});
 </script>
 
 <style lang="scss" scoped>
